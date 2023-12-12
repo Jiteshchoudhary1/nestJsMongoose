@@ -15,6 +15,18 @@ export class UserService {
   }
 
   async findAll() {
-    return await this.userModel.find({});
+    return await this.userModel.aggregate([
+      // {
+      //   $match: {},
+      // },
+      {
+        $lookup: {
+          from: 'useraddresses',
+          localField: '_id',
+          foreignField: 'userId',
+          as: 'asssdd',
+        },
+      },
+    ]);
   }
 }
