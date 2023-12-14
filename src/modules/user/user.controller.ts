@@ -1,10 +1,4 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  BadRequestException,
-} from '@nestjs/common';
+import { Controller, Post, Body, BadRequestException } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto, UserLoginDto } from './dto/create-user.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -69,13 +63,22 @@ export class UserController {
     if (isUserExists.isPhoneNumberVerified === false) {
       throw new BadRequestException('Phone number is not verified');
     }
-    const isPasswordValid = await comparePassword(
-      loginDto.password,
-      isUserExists.password,
-    );
-    if (!isPasswordValid) {
-      throw new BadRequestException('Invalid password');
+
+    if (loginDto.password != '') {
+      const isPasswordValid = await comparePassword(
+        loginDto.password,
+        isUserExists.password,
+      );
+      if (!isPasswordValid) {
+        throw new BadRequestException('Invalid password');
+      }
+    } else {
+      const checkOtp = await this.otpService.findOne(loginDto);
+      if (!checkOtp) {
+        throw new BadRequestException('Invalid otp');
+      }
     }
+
     const token = await this.authService.generateToken({
       _id: isUserExists._id,
       firstName: isUserExists.firstName,

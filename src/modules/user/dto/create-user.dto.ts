@@ -6,7 +6,7 @@ import {
   IsOptional,
   IsString,
   MaxLength,
-  MinLength,
+  ValidateIf,
 } from 'class-validator';
 
 export class CreateUserDto {
@@ -46,8 +46,12 @@ export class UserLoginDto {
   phoneNumber: number;
 
   @ApiProperty({ type: 'string' })
+  @ValidateIf((dto) => !dto.password || (dto.otp && dto.phoneNumber))
   @IsString()
-  @MaxLength(30)
-  @IsNotEmpty()
-  password: string;
+  password?: string;
+
+  @ApiProperty({ type: 'number' })
+  @ValidateIf((dto) => !dto.otp || (dto.password && dto.phoneNumber))
+  @IsNumber()
+  otp?: number;
 }
