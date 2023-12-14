@@ -1,0 +1,23 @@
+lets create an ecoomerce platform lets breakdown in this specific parts okay 
+
+there will be two entites 
+buyer and seller okay 
+user is buyer 
+user has login mechainsme, purchase, order ,refund,payment module 
+
+seller -> management seller  has 
+product management , and product inventory management system buy sell or listing etc 
+
+admin -> can delist the seller etc okay 
+
+user-> can login through google or email or phone etc as he wants 
+//now once user signup he can has multiple platform okay 
+// i want to suggest that just make it on difference platform and database would be same okay 
+// so seller can register and we can give its product management etc okay 
+
+lets start with user table okay 
+there will ne no social login okay 
+just with either email or phone no login no username login okay 
+
+
+login with otp pe kam start karna he apne ko okay 
