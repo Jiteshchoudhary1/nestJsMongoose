@@ -21,3 +21,39 @@ just with either email or phone no login no username login okay
 
 
 login with otp pe kam start karna he apne ko okay 
+
+
+mtlb ek categoryId ke multiple 
+attributesHoga okay 
+
+mtlb har ek category ke sath me apn attach kar rahe he okay 
+
+mtlb agar man lo kisi ne electronic select kar liya ho toh uska sare attribute chaiye okay 
+
+okay 
+man lo kisi ne select kiya electronic okay toh 
+uska sare data chaiye okay 
+
+
+aab mtlb jab bhi koi product add on karega toh apna kam ho jayega ha okay 
+
+like that 
+attribute =>color 
+attributeValue=> green red organge blue etc 
+categoryAttributes=> categoryId, attributeId bas yeh fetch kar lege phir ha 
+
+//mtlb koi product add karega toh apn yaha se usko verifiy karege okay 
+//mtlb apne ko isko save karwna he okay 
+
+{
+    "attributeBulk":[
+    {
+    "name":"tune",
+    "value":["dhom macha","don"]
+    },
+    {
+    "name":"headphone",
+    "value":["bluetooth","wired"]
+    }
+    ]
+    }
