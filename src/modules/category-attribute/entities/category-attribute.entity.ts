@@ -1,5 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, HydratedDocument, Schema as MongooseSchema } from 'mongoose';
+import { Document, Schema as MongooseSchema } from 'mongoose';
+import { Attribute } from 'src/modules/attribute/entities/attribute.entity';
+import { Category } from 'src/modules/category/entities/category.entity';
 
 @Schema({
   strictQuery: false,
@@ -10,20 +12,17 @@ import { Document, HydratedDocument, Schema as MongooseSchema } from 'mongoose';
 export class CategoryAttribute extends Document {
   @Prop({
     required: false,
-    default: null,
-    // type: [MongooseSchema.ObjectId],
-    type: MongooseSchema.Types.ObjectId,
+    type: [MongooseSchema.ObjectId],
     ref: 'Attribute',
   })
-  attributeId: MongooseSchema.Types.ObjectId;
+  attributeId: Attribute[];
 
   @Prop({
     required: false,
-    default: null,
-    type: MongooseSchema.Types.ObjectId,
+    type: MongooseSchema.ObjectId,
     ref: 'Category',
   })
-  categoryId: MongooseSchema.Types.ObjectId;
+  categoryId: Category;
 }
 
 export const CategoryAttributeSchema =

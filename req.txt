@@ -57,3 +57,43 @@ categoryAttributes=> categoryId, attributeId bas yeh fetch kar lege phir ha
     }
     ]
     }
+
+    mtlb agar apne ko har ek category ke sath isko attach karna hoga mtlb koi manually toh nahi karna chaiyega 
+    mtlb kuch script se ho jaye toh kam ho jayega okay
+
+
+
+mtlb pehle attribute
+then attributeValue 
+then usko categoryAttributes se attach kar do okay 
+aab yaha se filter bhi laga sakte he apn okay 
+
+
+//first add category okay 
+//then add attributebulk me with properties 
+//now map with categoryAttributes okay 
+//now do same thing with product add karte time okay 
+
+aab product add karo okay 
+{
+    name:'Samsung',
+    categoryId:'657bfc27b26705130a5c9b62', => es category ke attributes he okay yeh predefined rahega okay 
+    attributes->[
+        {
+            attributeId:'',
+            attributeValueId:''
+        },
+        {
+            attributeId:'',
+            attributeValueId:''
+        }  //esa he ki abhi ke liye toh sab ke liye common rahege attribute okay 
+    ],
+    title:'',
+    slug:'',
+    sellerId:'etc',
+    
+
+
+
+
+}

@@ -11,6 +11,7 @@ import { CategoryModule } from './modules/category/category.module';
 import { AttributeModule } from './modules/attribute/attribute.module';
 import { AttributeValuesModule } from './modules/attribute-values/attribute-values.module';
 import { CategoryAttributeModule } from './modules/category-attribute/category-attribute.module';
+import { ProductModule } from './modules/product/product.module';
 mongoose.set('debug', true);
 @Module({
   imports: [
@@ -29,6 +30,7 @@ mongoose.set('debug', true);
     AttributeModule,
     AttributeValuesModule,
     CategoryAttributeModule,
+    ProductModule,
   ],
   controllers: [AppController],
   providers: [AppService],
