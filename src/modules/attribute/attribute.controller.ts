@@ -8,10 +8,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { AttributeService } from './attribute.service';
-import {
-  CreateAttributeBulkDto,
-  CreateAttributeDto,
-} from './dto/create-attribute.dto';
+import { CreateAttributeBulkDto } from './dto/create-attribute.dto';
 import { UpdateAttributeDto } from './dto/update-attribute.dto';
 import { ApiTags } from '@nestjs/swagger';
 
@@ -19,19 +16,6 @@ import { ApiTags } from '@nestjs/swagger';
 @Controller('attribute')
 export class AttributeController {
   constructor(private readonly attributeService: AttributeService) {}
-
-  @Post()
-  async create(@Body() createAttributeDto: CreateAttributeDto) {
-    const attribute = await this.attributeService.create(createAttributeDto);
-    const createAttributeValueArray = createAttributeDto.value.map((ele) => {
-      return {
-        value: ele,
-        attributeId: attribute._id,
-      };
-    });
-    await this.attributeService.createAttributeValue(createAttributeValueArray);
-    return attribute;
-  }
 
   @Post('/bulk')
   async bulkAttributeCreate(
@@ -52,9 +36,7 @@ export class AttributeController {
           });
           return {};
         });
-        // bulkValue.push(createAttributeValueArray);
       }
-      console.log('bulk value we have here@@', bulkValue);
       await this.attributeService.createAttributeValue(bulkValue);
       return true;
     }

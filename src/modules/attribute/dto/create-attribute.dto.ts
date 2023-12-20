@@ -1,10 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
 import {
+  ArrayNotEmpty,
   IsArray,
   IsNotEmpty,
   IsString,
   MaxLength,
-  Validate,
 } from 'class-validator';
 export class CreateAttributeDto {
   @ApiProperty({ type: 'string' })
@@ -20,10 +21,9 @@ export class CreateAttributeDto {
 }
 
 export class CreateAttributeBulkDto {
-  @IsNotEmpty()
+  @ApiProperty({ isArray: true, type: CreateAttributeDto })
   @IsArray()
-  @Validate(CreateAttributeDto, {
-    message: 'Enter valid value .',
-  })
+  @ArrayNotEmpty()
+  @Type(() => CreateAttributeDto)
   attributeBulk: CreateAttributeDto[];
 }
