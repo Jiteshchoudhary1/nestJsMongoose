@@ -93,7 +93,10 @@ aab product add karo okay
     sellerId:'etc',
     
 
-
-
-
 }
+
+//mtlb 
+//aab apne ko na category ko na aab jese brand ko bhi map karna ka he okay 
+mtlb main category ke behalf se manage karege apn 
+
+divis labs 15 
