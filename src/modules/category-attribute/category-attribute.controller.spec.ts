@@ -11,7 +11,9 @@ describe('CategoryAttributeController', () => {
       providers: [CategoryAttributeService],
     }).compile();
 
-    controller = module.get<CategoryAttributeController>(CategoryAttributeController);
+    controller = module.get<CategoryAttributeController>(
+      CategoryAttributeController,
+    );
   });
 
   it('should be defined', () => {

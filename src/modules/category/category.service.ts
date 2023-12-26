@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCategoryDto } from './dto/create-category.dto';
-import { UpdateCategoryDto } from './dto/update-category.dto';
 import { InjectModel } from '@nestjs/mongoose';
-import { Category, CategorySchema } from './entities/category.entity';
+import { Category } from './entities/category.entity';
 import { Model } from 'mongoose';
 
 @Injectable()
@@ -13,13 +12,14 @@ export class CategoryService {
   ) {}
   async create(createUserDto: CreateCategoryDto) {
     createUserDto.parent = createUserDto.parent ? createUserDto.parent : null;
-    let data = await this.categoryRepository.create(createUserDto);
+    const data = await this.categoryRepository.create(createUserDto);
     await this.buildAncestors(data._id, createUserDto.parent);
     return data;
   }
   async findAll() {
     return await this.categoryRepository.find({}, { 'ancestors._id': 0 });
   }
+
   async buildAncestors(id: any, parent_id: any) {
     try {
       const parent_category = await this.categoryRepository
@@ -49,17 +49,5 @@ export class CategoryService {
       result.forEach(async (doc) => {
         await this.buildHierarchyAncestors(doc._id, category_id);
       });
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} category`;
-  }
-
-  update(id: number, updateCategoryDto: UpdateCategoryDto) {
-    return `This action updates a #${id} category`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} category`;
   }
 }

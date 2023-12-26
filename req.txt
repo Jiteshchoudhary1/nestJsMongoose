@@ -99,4 +99,49 @@ aab product add karo okay
 //aab apne ko na category ko na aab jese brand ko bhi map karna ka he okay 
 mtlb main category ke behalf se manage karege apn 
 
-divis labs 15 
+//category management we have here 
+add category after that 
+
+category management ->
+categoryAttribute ->
+attribute -> to manage the attribute of product 
+attributeValue -> to manage the attribute value 
+
+same with product management ke sath bhi hoga okay 
+
+//agar mysql ke sath kare toh bhut sahi hoga ha 
+
+
+let attributeArray = [
+    {
+        name: 'ram',
+        value: ['4gb', '8gb', '12gb', '16gb'],
+    },
+    {
+        name: 'color',
+        value: ['red', 'green', 'blue', 'volate'],
+    },
+    {
+        name: 'Operating system',
+        value: [
+            'android 10',
+            'android 11',
+            'android 12',
+            'android 13',
+            'android 14',
+            'android 15',
+        ],
+    },
+    {
+        name: 'Screen size',
+        value: ['3.4 inch', '6.5 inch', '7.8 inch'],
+    },
+    {
+        name: 'Battery',
+        value: ['4500 mh', '5000 mh'],
+    },
+    {
+        name: 'Sim Card size',
+        value: ['Nano'],
+    },
+];

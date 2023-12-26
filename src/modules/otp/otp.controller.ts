@@ -1,11 +1,4 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Param,
-  BadRequestException,
-} from '@nestjs/common';
+import { Controller, Post, Body, BadRequestException } from '@nestjs/common';
 import { OtpService } from './otp.service';
 import { ResendOtpDto, VerifyOtpDto } from './dto/create-otp.dto';
 import { ApiTags } from '@nestjs/swagger';

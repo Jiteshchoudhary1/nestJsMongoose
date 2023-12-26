@@ -1,22 +1,14 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body } from '@nestjs/common';
 import { AttributeService } from './attribute.service';
 import { CreateAttributeBulkDto } from './dto/create-attribute.dto';
-import { UpdateAttributeDto } from './dto/update-attribute.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiProperty, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('attribute')
 @Controller('attribute')
 export class AttributeController {
   constructor(private readonly attributeService: AttributeService) {}
 
+  @ApiProperty({ description: 'use for create bulk attributes with value' })
   @Post('/bulk')
   async bulkAttributeCreate(
     @Body() createAttributeDto: CreateAttributeBulkDto,
@@ -42,26 +34,15 @@ export class AttributeController {
     }
   }
 
+  @ApiProperty({ description: 'use for get all attributes with values ' })
   @Get()
   findAll() {
     return this.attributeService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.attributeService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(
-    @Param('id') id: string,
-    @Body() updateAttributeDto: UpdateAttributeDto,
-  ) {
-    return this.attributeService.update(+id, updateAttributeDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.attributeService.remove(+id);
+  @ApiProperty({ description: 'use for get all attributes with values ' })
+  @Get('/-value')
+  getAttributesWithValues() {
+    return this.attributeService.attributeWithValues();
   }
 }

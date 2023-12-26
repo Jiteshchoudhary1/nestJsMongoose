@@ -15,13 +15,16 @@ import { ProductModule } from './modules/product/product.module';
 mongoose.set('debug', true);
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://127.0.0.1:27017/nest', {
-      connectionFactory: (connection) => {
-        // console.log('cccc', connection);
-        // connection.plugin(require('mongoose-mpath'));
-        return connection;
+    MongooseModule.forRoot(
+      'mongodb+srv://jitesh:YqFeb65xtawQ$bx@cluster0.nux76al.mongodb.net',
+      {
+        connectionFactory: (connection) => {
+          console.log('cccc', connection);
+          // connection.plugin(require('mongoose-mpath'));
+          return connection;
+        },
       },
-    }),
+    ),
     UserModule,
     OtpModule,
     AuthModule,

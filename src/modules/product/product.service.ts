@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
-import { UpdateProductDto } from './dto/update-product.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Product } from './entities/product.entity';
 import { Model } from 'mongoose';
@@ -12,9 +11,8 @@ export class ProductService {
   // async create(createProductDto: CreateProductDto) {
   //   return 'This action adds a new product';
   // }
-  async create(createProductDto: any) {
+  async create(createProductDto: CreateProductDto) {
     return await this.productRepository.create(createProductDto);
-    // return 'This action adds a new product';
   }
   async findAll() {
     return await this.productRepository
@@ -22,7 +20,6 @@ export class ProductService {
       .populate('attributes.attributeId')
       .populate('attributes.attributeValueId')
       .populate('categoryId');
-    return `This action returns all product`;
   }
 
   async findOne(id: any) {
@@ -31,13 +28,5 @@ export class ProductService {
       .populate('attributes.attributeId')
       .populate('attributes.attributeValueId')
       .populate('categoryId');
-  }
-
-  update(id: number, updateProductDto: UpdateProductDto) {
-    return `This action updates a #${id} product`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} product`;
   }
 }
